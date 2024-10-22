@@ -3,27 +3,24 @@ import Todo from "./components/Todo";
 import Tasks from "./components/Tasks";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "./App.module.css";
+import { useState } from "react";
 
 function App() {
-  const todoItems = [
-    {
-      activity: "go gym",
-      date: "10/17/2024",
-    },
-    {
-      activity: "bed time",
-      date: "10/17/2024",
-    },
-    {
-      activity: "Laughing",
-      date: "10/17/2024",
-    },
-  ];
+  const [todoItems, updateItems] = useState([]);
+
+  const addNewTask = (Task, Date) => {
+    updateItems([...todoItems, { activity: Task, date: Date }]);
+  };
+
+  const DeleteTask = (TaskName) => {
+    updateItems(todoItems.filter((item) => item.activity !== TaskName));
+  };
+
   return (
     <center className={`${styles["Contents"]}`}>
       <AppName />
-      <Todo></Todo>
-      <Tasks activities={todoItems}></Tasks>
+      <Todo addNewTask={addNewTask}></Todo>
+      <Tasks activities={todoItems} DeleteTask={DeleteTask}></Tasks>
     </center>
   );
 }
