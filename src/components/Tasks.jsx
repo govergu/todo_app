@@ -12,7 +12,7 @@ const Tasks = ({ activities, DeleteTask }) => {
         <Task
           Activity={items.activity}
           Date={items.date}
-          key={items}
+          key={items.activity}
           DeleteTask={DeleteTask}
         ></Task>
       ))}

@@ -17,11 +17,13 @@ function App() {
   };
 
   return (
-    <center className={`${styles["Contents"]}`}>
-      <AppName />
-      <Todo addNewTask={addNewTask}></Todo>
-      <Tasks activities={todoItems} DeleteTask={DeleteTask}></Tasks>
-    </center>
+    <div className={styles.containers}>
+      <div className={`${styles["Contents"]}`}>
+        <AppName />
+        <Todo addNewTask={addNewTask}></Todo>
+        <Tasks activities={todoItems} DeleteTask={DeleteTask}></Tasks>
+      </div>
+    </div>
   );
 }
 

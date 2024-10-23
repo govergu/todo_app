@@ -1,5 +1,6 @@
 import styles from "./Todo.module.css";
 import css from "./Task.module.css";
+import { MdDelete } from "react-icons/md";
 function Task({ Activity, Date, DeleteTask }) {
   return (
     <div className={`${css["item"]} row`}>
@@ -10,7 +11,7 @@ function Task({ Activity, Date, DeleteTask }) {
           className={`${styles["butt"]} btn btn-danger`}
           onClick={() => DeleteTask(Activity)}
         >
-          Delete
+          <MdDelete />
         </button>
       </div>
     </div>

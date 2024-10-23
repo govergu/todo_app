@@ -1,6 +1,12 @@
 .Contents {
   box-sizing: border-box;
-  margin: 20px;
+  margin: 20px auto;
+  width: 600px;
+  text-align: center;
 }
 
-
+.containers {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}

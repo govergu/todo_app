@@ -1,13 +1,17 @@
 import { useState } from "react";
 import styles from "./Todo.module.css";
+import { useRef } from "react";
 function Todo({ addNewTask }) {
-  const [Task, updateTask] = useState();
-  const [Date, updateDate] = useState();
-  const AddTaskValue = () => {
-    console.log("this function is called");
+  const task = useRef("");
+  const date = useRef("");
+
+  const AddTaskValue = (event) => {
+    event.preventDefault();
+    const Task = task.current.value;
+    const Date = date.current.value;
+    task.current.value = "";
+    date.current.value = "";
     addNewTask(Task, Date);
-    updateDate("");
-    updateTask("");
   };
   return (
     <div className="container">
@@ -17,8 +21,7 @@ function Todo({ addNewTask }) {
             type="text"
             placeholder="Enter Todo task"
             className={`${styles["todoinputs"]}`}
-            value={Task}
-            onChange={(event) => updateTask(event.target.value)}
+            ref={task}
           />
         </div>
         <div className="col-4">
@@ -27,8 +30,7 @@ function Todo({ addNewTask }) {
             name=""
             id=""
             className={`${styles["todoinputs"]}`}
-            value={Date}
-            onChange={(event) => updateDate(event.target.value)}
+            ref={date}
           />
         </div>
         <div className="col-2">

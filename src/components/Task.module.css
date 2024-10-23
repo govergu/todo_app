@@ -6,5 +6,20 @@
 .container_slot {
   margin-top: 8px;
   display: grid;
+  grid-template-rows: repeat(5, 1fr);
   gap: 8px;
+  height: 200px;
+  overflow-y: overlay;
+}
+
+.container_slot::-webkit-scrollbar {
+  width: 2px;
+}
+
+.container_slot::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.container_slot::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 6px;
 }
