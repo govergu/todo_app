@@ -4,12 +4,13 @@ import Tasks from "./components/Tasks";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "./App.module.css";
 import { useState } from "react";
+import { TodoActivities } from "./store/StoredItems";
 
 function App() {
   const [todoItems, updateItems] = useState([]);
 
   const addNewTask = (Task, Date) => {
-    updateItems([...todoItems, { activity: Task, date: Date }]);
+    updateItems((currValue) => [...currValue, { activity: Task, date: Date }]);
   };
 
   const DeleteTask = (TaskName) => {
@@ -17,13 +18,21 @@ function App() {
   };
 
   return (
-    <div className={styles.containers}>
-      <div className={`${styles["Contents"]}`}>
-        <AppName />
-        <Todo addNewTask={addNewTask}></Todo>
-        <Tasks activities={todoItems} DeleteTask={DeleteTask}></Tasks>
+    <TodoActivities.Provider
+      value={{
+        todoItems,
+        addNewTask,
+        DeleteTask,
+      }}
+    >
+      <div className={styles.containers}>
+        <div className={`${styles["Contents"]}`}>
+          <AppName />
+          <Todo></Todo>
+          <Tasks></Tasks>
+        </div>
       </div>
-    </div>
+    </TodoActivities.Provider>
   );
 }
 

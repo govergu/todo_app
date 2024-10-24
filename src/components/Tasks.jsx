@@ -1,19 +1,21 @@
+import { useContext } from "react";
 import Task from "./Task";
 import css from "./Task.module.css";
-const Tasks = ({ activities, DeleteTask }) => {
+import { TodoActivities } from "../store/StoredItems";
+const Tasks = () => {
+  let { todoItems } = useContext(TodoActivities);
   let content;
-  if (activities === null || activities.length === 0) {
+  if (todoItems === null || todoItems.length === 0) {
     content = <p>No task to do</p>;
   }
   return (
     <div className={`container ${css.container_slot}`}>
       {content}
-      {activities.map((items) => (
+      {todoItems.map((items) => (
         <Task
           Activity={items.activity}
           Date={items.date}
           key={items.activity}
-          DeleteTask={DeleteTask}
         ></Task>
       ))}
     </div>

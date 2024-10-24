@@ -1,7 +1,10 @@
-import { useState } from "react";
 import styles from "./Todo.module.css";
 import { useRef } from "react";
-function Todo({ addNewTask }) {
+import { TodoActivities } from "../store/StoredItems";
+import { useContext } from "react";
+function Todo() {
+  const { addNewTask } = useContext(TodoActivities);
+
   const task = useRef("");
   const date = useRef("");
 

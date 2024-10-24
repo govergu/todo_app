@@ -1,7 +1,10 @@
 import styles from "./Todo.module.css";
 import css from "./Task.module.css";
 import { MdDelete } from "react-icons/md";
-function Task({ Activity, Date, DeleteTask }) {
+import { useContext } from "react";
+import { TodoActivities } from "../store/StoredItems";
+function Task({ Activity, Date }) {
+  const { DeleteTask } = useContext(TodoActivities);
   return (
     <div className={`${css["item"]} row`}>
       <div className="col-6">{Activity}</div>
